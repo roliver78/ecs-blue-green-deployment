@@ -29,6 +29,26 @@ Parameters:
     Description: >
       S3 Bucket used for nested templates
 
+  Subnet1:
+    Type: AWS::EC2::Subnet::Id
+    Description: >
+      Valid subnetID for this VPC
+
+  Subnet2:
+    Type: AWS::EC2::Subnet::Id
+    Description: >
+      Valid subnetID for this VPC
+
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: >
+      VPC ID for this account
+
+  VpcCIDR:
+    Type: String
+    Description: >
+      Valid VPC CIDR for this account
+
 
 Metadata:
   AWS::CloudFormation::Interface:
@@ -62,21 +82,10 @@ Resources:
         GitHubRepo: !Ref GitHubRepo
         GitHubBranch: !Ref GitHubBranch
         TemplateBucket: !Ref TemplateBucket
-        Subnet1: !GetAtt VPC.Outputs.Subnet1
-        Subnet2: !GetAtt VPC.Outputs.Subnet2
-        VpcId: !GetAtt VPC.Outputs.VpcId
-        VpcCIDR: 10.215.0.0/16
-
-  VPC:
-    Type: AWS::CloudFormation::Stack
-    Properties:
-      TemplateURL: !Sub https://s3.amazonaws.com/${TemplateBucket}/templates/vpc.yaml
-      Parameters:
-        Name: !Ref AWS::StackName
-        VpcCIDR: 10.215.0.0/16
-        Subnet1CIDR: 10.215.10.0/24
-        Subnet2CIDR: 10.215.20.0/24
-
+        Subnet1: !Ref Subnet1 
+        Subnet2: !Ref Subnet2
+        VpcId: !Ref VpcIdd
+        VpcCIDR: !Ref VpcCIDR
 
 Outputs:
  PipelineUrl:
