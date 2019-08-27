@@ -20,4 +20,4 @@ aws s3 cp ecs-blue-green-deployment.yaml "s3://${bucket}" --profile sbx
 aws s3 cp --recursive templates/ "s3://${bucket}/templates" --profile sbx
 aws s3 cp --recursive scripts/ "s3://${bucket}/scripts" --profile sbx
 aws s3api put-bucket-versioning --bucket "${bucket}" --versioning-configuration Status=Enabled --profile sbx
-aws cloudformation deploy --stack-name $stackname --template-file ecs-blue-green-deployment.yaml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides GitHubUser=$GitHubUser GitHubToken=$GitHubToken TemplateBucket=$bucket Subnet1=subnet-5b48e510 Subnet2=subnet-a371f2da VpcID=vpc-4c2c0d35 VpcCIDR=171.31.0.0/16  --profile sbx
+aws cloudformation deploy --stack-name $stackname --template-file ecs-blue-green-deployment.yaml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides GitHubUser=$GitHubUser GitHubToken=$GitHubToken TemplateBucket=$bucket Subnet1=subnet-5b48e510 Subnet2=subnet-a371f2da VpcId=vpc-4c2c0d35 VpcCIDR=171.31.0.0/16  --profile sbx
