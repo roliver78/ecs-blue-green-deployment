@@ -16,7 +16,7 @@ Parameters:
 
   GitHubBranch:
     Type: String
-    Default: master
+    Default: fargate
     Description: The branch of the repo to continuously deploy.
 
   GitHubToken:
@@ -84,7 +84,7 @@ Resources:
         TemplateBucket: !Ref TemplateBucket
         Subnet1: !Ref Subnet1 
         Subnet2: !Ref Subnet2
-        VpcId: !Ref VpcIdd
+        VpcId: !Ref VpcId
         VpcCIDR: !Ref VpcCIDR
 
 Outputs:
