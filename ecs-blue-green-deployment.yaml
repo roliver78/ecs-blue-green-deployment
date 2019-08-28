@@ -16,7 +16,7 @@ Parameters:
 
   GitHubBranch:
     Type: String
-    Default: fargate
+    Default: master
     Description: The branch of the repo to continuously deploy.
 
   GitHubToken:
