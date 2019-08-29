@@ -52,7 +52,7 @@ Resources:
   LoadBalancer:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: !Sub https://s3.amazonaws.com/${TemplateBucket}/templates/load-balancer.yaml
+      TemplateURL: !Sub https://${TemplateBucket}.s3-us-west-2.amazonaws.com/templates/load-balancer.yaml
       Parameters:
         Subnet1 : !Ref Subnet1
         Subnet2 : !Ref Subnet2
@@ -63,7 +63,7 @@ Resources:
   GreenService:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: !Sub https://s3.amazonaws.com/${TemplateBucket}/templates/service.yaml
+      TemplateURL: !Sub https://${TemplateBucket}.s3-us-west-2.amazonaws.com/templates/service.yaml
       Parameters:
         Cluster: !Ref Cluster
         LoadBalancer: !GetAtt LoadBalancer.Outputs.LoadBalancerArn
@@ -81,7 +81,7 @@ Resources:
   BlueService:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: !Sub https://s3.amazonaws.com/${TemplateBucket}/templates/service.yaml
+      TemplateURL: !Sub https://${TemplateBucket}.s3-us-west-2.amazonaws.com/templates/service.yaml
       Parameters:
         Cluster: !Ref Cluster
         LoadBalancer: !GetAtt LoadBalancer.Outputs.LoadBalancerArn
