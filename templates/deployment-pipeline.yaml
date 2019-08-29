@@ -117,6 +117,7 @@ Resources:
                   - ec2:*
                   - elasticloadbalancing:*
                   - autoscaling:*
+                  - s3:*
 
   CodeBuildServiceRole:
     Type: AWS::IAM::Role
